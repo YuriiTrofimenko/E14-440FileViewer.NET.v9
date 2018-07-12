@@ -19,8 +19,8 @@ namespace org.tyaa.e14_440fileviewernet
     public class Program
     {
         //private delegate void WorkDelegate(string fileName);
-        private static int start2;
-        public static int threadCount = 0;
+        public static int start2;
+        public static int threadCount = 3;
 
         static void Main(string[] args)
         {
@@ -140,15 +140,15 @@ namespace org.tyaa.e14_440fileviewernet
 
             WorkHelper workHelper = new WorkHelper();
 
-            int start1 = DateTime.Now.Millisecond;
+            /*int start1 = DateTime.Now.Millisecond;
             workHelper.printMax(@"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-10");
             workHelper.printMax(@"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-00 tar");
             workHelper.printMax(@"C:\Users\student\tyaa\C#\SystemDev\сп\10f");
             Console.WriteLine(DateTime.Now.Millisecond - start1);
-            //1.6 1.7 1.4
+            //1.6 1.7 1.4*/
 
             start2 = DateTime.Now.Millisecond;
-            workHelper.doThread(
+            /*workHelper.doThread(
                 workHelper.printMax
                 , @"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-10"
             );
@@ -159,16 +159,26 @@ namespace org.tyaa.e14_440fileviewernet
             workHelper.doThread(
                 workHelper.printMax
                 , @"C:\Users\student\tyaa\C#\SystemDev\сп\10f"
-            );
+            );*/
 
-            while (true)
+            ThreadPool.QueueUserWorkItem(workHelper.printMax
+                , @"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-10");
+            ThreadPool.QueueUserWorkItem(workHelper.printMax
+                , @"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-00 tar");
+            ThreadPool.QueueUserWorkItem(workHelper.printMax
+                , @"C:\Users\student\tyaa\C#\SystemDev\сп\10f");
+
+
+            Thread.Sleep(1000);
+
+            /*while (true)
             {
                 if (threadCount == 0)
                 {
                     Console.WriteLine(DateTime.Now.Millisecond - start2);
                     break;
                 }
-            }
+            }*/
 
             /*Запись метаданных в XML-файл*/
 

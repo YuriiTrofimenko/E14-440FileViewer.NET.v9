@@ -32,7 +32,7 @@ namespace E14_440FileViewer.NET.utils
 
         public void printMax(Object _fileName)
         {
-            Interlocked.Increment(ref Program.threadCount);
+            //Interlocked.Increment(ref Program.threadCount);
             //Program.threadCount++;
             String filePath = _fileName.ToString();
 
@@ -61,6 +61,11 @@ namespace E14_440FileViewer.NET.utils
             Console.WriteLine(getMax(channelsMax));
             //Program.threadCount--;
             Interlocked.Decrement(ref Program.threadCount);
+
+            if (Program.threadCount == 0)
+            {
+                Console.WriteLine(DateTime.Now.Millisecond - Program.start2);
+            }
         }
 
         internal void doThread(Action<object> workFunction, string _fileName)
