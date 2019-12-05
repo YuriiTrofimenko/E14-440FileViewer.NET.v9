@@ -79,7 +79,7 @@
     <Compile Include="dao\utils\DataFileTypes.cs" />
     <Compile Include="IWork.cs" />
     <Compile Include="model\Channel.cs" />
-    <Compile Include="model\ChannelsBoundle.cs" />
+    <Compile Include="model\ChannelsBundle.cs" />
     <Compile Include="model\generics\Channel.cs" />
     <Compile Include="model\interfaces\IChannelsBoundle.cs" />
     <Compile Include="Program.cs" />

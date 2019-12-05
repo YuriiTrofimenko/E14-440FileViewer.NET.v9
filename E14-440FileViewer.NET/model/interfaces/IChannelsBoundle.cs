@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E14_440FileViewer.NET.model.interfaces
 {
-    internal interface IChannelsBoundle
+    internal interface IChannelsBundle
     {
         //Channel[] channelArray
         ArrayList channelArrayList

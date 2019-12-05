@@ -15,7 +15,7 @@ namespace E14_440FileViewer.NET.utils
         //файл трансформации
         private const String STYLESHEET_URI_STRING = "xml-html.xsl";
 
-        public XDocument getChannelsMetadata(ref ChannelsBoundle _channelsBoundle)
+        public XDocument getChannelsMetadata(ref ChannelsBundle _channelsBoundle)
         {
 
             //Корневой узел-элемент
@@ -54,7 +54,7 @@ namespace E14_440FileViewer.NET.utils
             return new XDocument(new XDeclaration("1.0", "UTF-8", "yes"), root);
         }
 
-        public void saveChannelsMetadata(ref ChannelsBoundle _channelsBoundle, ReportTypes _reportType)
+        public void saveChannelsMetadata(ref ChannelsBundle _channelsBoundle, ReportTypes _reportType)
         {
             XDocument xdoc = getChannelsMetadata(ref _channelsBoundle);
             switch (_reportType)

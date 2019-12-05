@@ -8,7 +8,7 @@ using System.Text;
 namespace org.tyaa.e14_440fileviewernet.model
 {
     /*Модель "Пакет каналов"*/
-    class ChannelsBoundle : IEnumerable, IChannelsBoundle
+    class ChannelsBundle : IEnumerable, IChannelsBundle
     {
         //Порядковые номера каналов
         private readonly int[] mNumbersArray;
@@ -29,7 +29,7 @@ namespace org.tyaa.e14_440fileviewernet.model
 
         //Поля mNumbersArray, mAmpsArray, mFrequency инициализируем только в конструкторе
         //public ChannelsBoundle(int _length, int[] _numbersArray, int[] _ampsArray, int _frequency)
-        public ChannelsBoundle(int[] _numbersArray, int[] _ampsArray, int _frequency)
+        public ChannelsBundle(int[] _numbersArray, int[] _ampsArray, int _frequency)
         {
             //mChannelArray = new Channel[_length];
             mChannelArrayList = new ArrayList();
@@ -74,9 +74,17 @@ namespace org.tyaa.e14_440fileviewernet.model
                 //    mChannelArrayList.Capacity = _channelPos + 1;
                 //}
                 //Console.WriteLine(mChannelArrayList.Capacity);
-                //Console.WriteLine(_channelPos);
-                //mChannelArrayList[_channelPos] = (Channel)value;
-                mChannelArrayList.Add((Channel)value);
+                /* while (_channelPos >= mChannelArrayList.Count)
+                {
+                    mChannelArrayList.Add(null);
+                } */
+
+                if (_channelPos >= mChannelArrayList.Count)
+                {
+                    mChannelArrayList.AddRange(new object[_channelPos - mChannelArrayList.Count + 1]);
+                }
+                mChannelArrayList[_channelPos] = (Channel)value;
+                Console.WriteLine(mChannelArrayList.Count);
             }
         }
 

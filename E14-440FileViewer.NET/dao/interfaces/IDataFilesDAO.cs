@@ -9,10 +9,10 @@ namespace E14_440FileViewer.NET.interfaces
     interface IDataFilesDAO
     {
         //Считать все данные из файла в набор объектов "Канал"
-        ChannelsBoundle getChannels();
+        ChannelsBundle getChannels();
         //Считать из файла данные одного канала в объект "Канал"
         Channel getChannel(int _number);
         //Сохранить набор объектов "Канал" в новый файл данных
-        void persistChannels(ChannelsBoundle _сhannelsBoundle);
+        void persistChannels(ChannelsBundle _сhannelsBoundle);
     }
 }

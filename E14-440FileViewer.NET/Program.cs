@@ -24,6 +24,15 @@ namespace org.tyaa.e14_440fileviewernet
 
         static void Main(string[] args)
         {
+
+            /*ChannelsBundle channelsBundle1 =
+                new ChannelsBundle(new int[]{ 1, 2, 3 }, new int[] { 1, 1, 1 }, 1500);
+            channelsBundle1[0] = new Channel();
+            channelsBundle1[1] = new Channel();
+            channelsBundle1[50] = new Channel();
+            channelsBundle1[40] = new Channel();
+            Console.WriteLine(channelsBundle1[50]);
+            Console.WriteLine(channelsBundle1[40]);*/
             //Channel channel1 = new Channel(1, 0);
             //Channel channel2 = new Channel(2, 0);
 
@@ -55,45 +64,46 @@ namespace org.tyaa.e14_440fileviewernet
             //    }
             //}
 
-            //Filters filters1 = Filters.Batterwort;
-            //Filters filters2 = Filters.Chebishev;
+            /*Filters filters1 = Filters.Batterwort;
+            Filters filters2 = Filters.Chebishev;
             //Console.WriteLine(filters1 < filters2);
 
-            //DataFileFacade dataFileFacade = new DataFileFacade(DataFileTypes.OldDataFile);
-            //dataFileFacade.getChannels();
-            //dataFileFacade.setDAOType(DataFileTypes.NewDataFile);
-            //dataFileFacade.getChannels();
-            //dataFileFacade.setDAOType(DataFileTypes.OldDataFile);
-            //dataFileFacade.getChannels();
+            DataFileFacade dataFileFacade = new DataFileFacade(DataFileTypes.OldDataFile);
+            dataFileFacade.getChannels();
+            dataFileFacade.setDAOType(DataFileTypes.NewDataFile);
+            dataFileFacade.getChannels();
+            dataFileFacade.setDAOType(DataFileTypes.OldDataFile);
+            dataFileFacade.getChannels();*/
 
-            //Mock<IChannelsBoundle> mock = new Mock<IChannelsBoundle>();
-            //mock.Setup(m => m.channelArray).Returns(
-            //    new Channel[]{
-            //        //new Channel{dataArray = new double?[3]{1, 2, 3}}
-            //        //,new Channel{dataArray = new double?[3]{0, 1, 2}}
-            //        new Channel{dataArrayList = (new ArrayList(){1, 2, 3})}
-            //        ,new Channel{dataArrayList = new ArrayList(){0, 1, 2}}
-            //    }
-            //);
-            //foreach (Channel channel in mock.Object.channelArray.AsEnumerable())
-            //{
-            //    foreach (double dataItem in channel.getDataArray())
-            //    {
-            //        Console.WriteLine(dataItem);
-            //    }
-            //}
+            /*IChannelsBundle> mock = new Mock<IChannelsBundle>();
+            mock.Setup(m => m.channelArrayList).Returns(
+                new ArrayList{
+                    //new Channel{dataArray = new double?[3]{1, 2, 3}}
+                    //,new Channel{dataArray = new double?[3]{0, 1, 2}}
+                    new Channel{dataArrayList = (new ArrayList(){1d, 2d, 3d})}
+                    ,new Channel{dataArrayList = new ArrayList(){0d, 1d, 2d}}
+                }
+            );
+            foreach (Channel channel in mock.Object.channelArrayList)
+            {
+                foreach (double dataItem in channel.getDataArray())
+                {
+                    Console.Write(dataItem + " ");
+                }
+                Console.WriteLine();
+            }*/
 
-            //const Int32 count = 10000000;
+            /*const Int32 count = 10000000;
 
-            //using (new OperationProfiler("Channel<T>"))
-            //{
-            //    gen.Channel<double> channel1 = new gen.Channel<double>(1, 0);
-            //    for (Int32 n = 0; n < count; n++)
-            //    {
-            //        channel1.addDataItem(n);
-            //    }
-            //    channel1 = null;  // для гарантированного выполнения сборки мусора
-            //}
+            using (new OperationProfiler("Channel<T>"))
+            {
+                gen.Channel<double> channel1 = new gen.Channel<double>(1, 0);
+                for (Int32 n = 0; n < count; n++)
+                {
+                    channel1.addDataItem(n);
+                }
+                channel1 = null;  // для гарантированного выполнения сборки мусора
+            }*/
 
             //using (new OperationProfiler("Channel"))
             //{
@@ -112,7 +122,7 @@ namespace org.tyaa.e14_440fileviewernet
 
             /*Чтение бинарных файлов*/
 
-            /*String filePath = @"C:\Users\student\tyaa\C#\SystemDev\сп\10f";
+            String filePath = @"C:\Users\student\Source\Repos\E14-440FileViewer.NET.v9\data\10f";
 
             ParamsReader paramsReader = new ParamsReader();
             List<gen.Channel<double>> channelsArrayList =
@@ -124,21 +134,22 @@ namespace org.tyaa.e14_440fileviewernet
             }
 
             DataReader dataReader = new DataReader();
-            dataReader.getData(@"C:\Users\student\tyaa\C#\SystemDev\сп\10f" + ".dat", ref channelsArrayList);
-            foreach (double dataItem in channelsArrayList[1].getDataArray())
+            dataReader.getData(@"C:\Users\student\Source\Repos\E14-440FileViewer.NET.v9\data\10f" + ".dat", ref channelsArrayList);
+            /*foreach (double dataItem in channelsArrayList[1].getDataArray())
             {
                 //Console.WriteLine(dataItem);
-            }
+            }*/
 
             List<double> channelsMax = new List<double>();
-            foreach (var item in channelsArrayList)
+            foreach (var channel in channelsArrayList)
             {
-                channelsMax.Add(getMax(item.getDataArray()));
-                //Console.WriteLine(getMax(item.getDataArray()));
+                //channelsMax.Add(getMax(item.getDataArray()));
+                //channelsMax.Add(item.getDataArray().Max());
+                Console.WriteLine(channel.getDataArray().Max());
             }
-            Console.WriteLine(getMax(channelsMax));*/
+            //Console.WriteLine(getMax(channelsMax));
 
-            WorkHelper workHelper = new WorkHelper();
+            //WorkHelper workHelper = new WorkHelper();
 
             /*int start1 = DateTime.Now.Millisecond;
             workHelper.printMax(@"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-10");
@@ -147,7 +158,7 @@ namespace org.tyaa.e14_440fileviewernet
             Console.WriteLine(DateTime.Now.Millisecond - start1);
             //1.6 1.7 1.4*/
 
-            start2 = DateTime.Now.Millisecond;
+            //start2 = DateTime.Now.Millisecond;
             /*workHelper.doThread(
                 workHelper.printMax
                 , @"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-10"
@@ -161,7 +172,7 @@ namespace org.tyaa.e14_440fileviewernet
                 , @"C:\Users\student\tyaa\C#\SystemDev\сп\10f"
             );*/
 
-            ThreadPool.QueueUserWorkItem(workHelper.printMax
+            /*ThreadPool.QueueUserWorkItem(workHelper.printMax
                 , @"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-10");
             ThreadPool.QueueUserWorkItem(workHelper.printMax
                 , @"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-00 tar");
@@ -169,7 +180,7 @@ namespace org.tyaa.e14_440fileviewernet
                 , @"C:\Users\student\tyaa\C#\SystemDev\сп\10f");
 
 
-            Thread.Sleep(1000);
+            Thread.Sleep(1000);*/
 
             /*while (true)
             {

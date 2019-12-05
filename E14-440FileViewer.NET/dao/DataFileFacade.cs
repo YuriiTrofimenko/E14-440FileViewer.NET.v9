@@ -12,8 +12,8 @@ namespace E14_440FileViewer.NET.dao
     class DataFileFacade : IDataFilesDAO
     {
         //делегат вызова метода получения данных
-        private delegate ChannelsBoundle GetChannelsBoundle();
-        //экземплячр делегата
+        private delegate ChannelsBundle GetChannelsBoundle();
+        //экземпляр делегата
         private GetChannelsBoundle getChannelsBoundleDelegate;
         //экземпляр датааксессора для новых файлов
         private NewDataFileDAO mNewDataFileDAO;
@@ -32,7 +32,7 @@ namespace E14_440FileViewer.NET.dao
             setDAOType(mDataFileType);
         }
 
-        public ChannelsBoundle getChannels()
+        public ChannelsBundle getChannels()
         {
 
             return getChannelsBoundleDelegate();
@@ -64,7 +64,7 @@ namespace E14_440FileViewer.NET.dao
             throw new NotImplementedException();
         }
 
-        public void persistChannels(ChannelsBoundle _сhannelsBoundle)
+        public void persistChannels(ChannelsBundle _сhannelsBoundle)
         {
             throw new NotImplementedException();
         }

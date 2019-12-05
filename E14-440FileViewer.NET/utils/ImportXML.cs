@@ -13,7 +13,7 @@ namespace E14_440FileViewer.NET.utils
 {
     class ImportXML
     {
-        private ChannelsBoundle mChannelsBoundle;
+        private ChannelsBundle mChannelsBoundle;
         private int mFrequency;
         private int mChannelsCount;
         //Порядковые номера каналов
@@ -26,7 +26,7 @@ namespace E14_440FileViewer.NET.utils
         //файл схемы
         private const String SCEMA_URI_STRING = "ChannelsMetadata.xsd";
 
-        public ChannelsBoundle getChannelsMetadata(String _path)
+        public ChannelsBundle getChannelsMetadata(String _path)
         {
 
             XmlDocument xmlDocument = new XmlDocument();
@@ -58,7 +58,7 @@ namespace E14_440FileViewer.NET.utils
                     }
                 }
 
-                mChannelsBoundle = new ChannelsBoundle(mNumbersArray, mAmpsArray, mFrequency);
+                mChannelsBoundle = new ChannelsBundle(mNumbersArray, mAmpsArray, mFrequency);
                 mChannelsBoundle.channelArrayList = mChannelArrayList;
 
                 return mChannelsBoundle;
