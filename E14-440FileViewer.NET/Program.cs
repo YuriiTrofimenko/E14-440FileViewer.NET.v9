@@ -64,13 +64,16 @@ namespace org.tyaa.e14_440fileviewernet
             //    }
             //}
 
-            /*Filters filters1 = Filters.Batterwort;
+            Filters filters1 = Filters.Batterwort;
             Filters filters2 = Filters.Chebishev;
             //Console.WriteLine(filters1 < filters2);
 
-            DataFileFacade dataFileFacade = new DataFileFacade(DataFileTypes.OldDataFile);
+            DataFileFacade2 dataFileFacade
+                = new DataFileFacade2(DataFileTypes.OldDataFile);
             dataFileFacade.getChannels();
             dataFileFacade.setDAOType(DataFileTypes.NewDataFile);
+            dataFileFacade.getChannels();
+            /*dataFileFacade.setDAOType(DataFileTypes.NewDataFile);
             dataFileFacade.getChannels();
             dataFileFacade.setDAOType(DataFileTypes.OldDataFile);
             dataFileFacade.getChannels();*/
@@ -122,7 +125,7 @@ namespace org.tyaa.e14_440fileviewernet
 
             /*Чтение бинарных файлов*/
 
-            String filePath = @"C:\Users\student\Source\Repos\E14-440FileViewer.NET.v9\data\10f";
+            /* String filePath = @"C:\Users\student\Source\Repos\E14-440FileViewer.NET.v9\data\10f";
 
             ParamsReader paramsReader = new ParamsReader();
             List<gen.Channel<double>> channelsArrayList =
@@ -135,18 +138,18 @@ namespace org.tyaa.e14_440fileviewernet
 
             DataReader dataReader = new DataReader();
             dataReader.getData(@"C:\Users\student\Source\Repos\E14-440FileViewer.NET.v9\data\10f" + ".dat", ref channelsArrayList);
-            /*foreach (double dataItem in channelsArrayList[1].getDataArray())
+            *//*foreach (double dataItem in channelsArrayList[1].getDataArray())
             {
                 //Console.WriteLine(dataItem);
             }*/
 
-            List<double> channelsMax = new List<double>();
+            /*List<double> channelsMax = new List<double>();
             foreach (var channel in channelsArrayList)
             {
                 //channelsMax.Add(getMax(item.getDataArray()));
                 //channelsMax.Add(item.getDataArray().Max());
                 Console.WriteLine(channel.getDataArray().Max());
-            }
+            }*/
             //Console.WriteLine(getMax(channelsMax));
 
             //WorkHelper workHelper = new WorkHelper();

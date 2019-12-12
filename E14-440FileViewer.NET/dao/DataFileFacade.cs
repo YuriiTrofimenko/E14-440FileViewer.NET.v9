@@ -13,7 +13,7 @@ namespace E14_440FileViewer.NET.dao
     {
         //делегат вызова метода получения данных
         private delegate ChannelsBundle GetChannelsBoundle();
-        //экземпляр делегата
+        //поле для экземпляра делегата
         private GetChannelsBoundle getChannelsBoundleDelegate;
         //экземпляр датааксессора для новых файлов
         private NewDataFileDAO mNewDataFileDAO;
