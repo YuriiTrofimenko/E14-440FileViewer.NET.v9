@@ -12,8 +12,6 @@ namespace E14_440FileViewer.NET.dao.implements.NewDataFileDAO_Parts
 
     class DataReader
     {
-        private int mCount;
-
         public void getData(String _filePathString, ref List<Channel<double>> _channelsArrayList) {
 
         int mCount = _channelsArrayList.Count;

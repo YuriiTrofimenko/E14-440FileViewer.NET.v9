@@ -1,7 +1,7 @@
 ﻿using E14_440FileViewer.NET.dao;
 using E14_440FileViewer.NET.model.interfaces;
 using E14_440FileViewer.NET.viewcontroller.utils;
-using Moq;
+// using Moq;
 using org.tyaa.e14_440fileviewernet.model;
 using gen = org.tyaa.e14_440fileviewernet.model.generics;
 using System;
@@ -13,6 +13,8 @@ using E14_440FileViewer.NET.utils;
 using E14_440FileViewer.NET.dao.implements.NewDataFileDAO_Parts;
 using System.Threading;
 using E14_440FileViewer.NET;
+using System.Windows.Forms;
+using E14_440FileViewer.NET.forms;
 
 namespace org.tyaa.e14_440fileviewernet
 {
@@ -21,10 +23,12 @@ namespace org.tyaa.e14_440fileviewernet
         //private delegate void WorkDelegate(string fileName);
         public static int start2;
         public static int threadCount = 3;
-
+        [STAThread]
         static void Main(string[] args)
         {
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
             /*ChannelsBundle channelsBundle1 =
                 new ChannelsBundle(new int[]{ 1, 2, 3 }, new int[] { 1, 1, 1 }, 1500);
             channelsBundle1[0] = new Channel();
@@ -64,15 +68,15 @@ namespace org.tyaa.e14_440fileviewernet
             //    }
             //}
 
-            Filters filters1 = Filters.Batterwort;
-            Filters filters2 = Filters.Chebishev;
+            // Filters filters1 = Filters.Batterwort;
+            // Filters filters2 = Filters.Chebishev;
             //Console.WriteLine(filters1 < filters2);
 
-            DataFileFacade2 dataFileFacade
+            /*DataFileFacade2 dataFileFacade
                 = new DataFileFacade2(DataFileTypes.OldDataFile);
             dataFileFacade.getChannels();
             dataFileFacade.setDAOType(DataFileTypes.NewDataFile);
-            dataFileFacade.getChannels();
+            dataFileFacade.getChannels();*/
             /*dataFileFacade.setDAOType(DataFileTypes.NewDataFile);
             dataFileFacade.getChannels();
             dataFileFacade.setDAOType(DataFileTypes.OldDataFile);

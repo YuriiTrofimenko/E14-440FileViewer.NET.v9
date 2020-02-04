@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E14-440FileViewer.NET", "E14-440FileViewer.NET\E14-440FileViewer.NET.csproj", "{33A1E54B-B096-4F9F-807B-87163C7325D6}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E14-440FileViewer.WinFormsv1", "E14-440FileViewer.NET\E14-440FileViewer.WinFormsv1.csproj", "{33A1E54B-B096-4F9F-807B-87163C7325D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B002A104-D2CF-494C-BA9D-3F9826FD7C39}
 	EndGlobalSection
 EndGlobal
