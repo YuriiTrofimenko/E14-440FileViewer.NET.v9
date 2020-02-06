@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using gen = org.tyaa.e14_440fileviewernet.model.generics;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Resources;
+using System.Globalization;
+using E14_440FileViewerNET.model;
 
 namespace E14_440FileViewer.NET.forms
 {
@@ -17,6 +20,9 @@ namespace E14_440FileViewer.NET.forms
     {
         private PointF startPoint = new PointF();
         List<gen.Channel<double>> channelsArrayList;
+        private string[] langList;
+        private string currentLang = "en";
+        private bool localization = false;
 
         private IEnumerable<Color> GetColor() {
             yield return Color.Red;
@@ -29,18 +35,26 @@ namespace E14_440FileViewer.NET.forms
             yield return Color.Orange;
         }
 
+        private IEnumerable<string> GetLang()
+        {
+            yield return "en";
+            yield return "ru";
+        }
+
         public MainForm()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
             this.ResizeRedraw = true;
             startPoint.X = 0;
-            //startPoint.Y = this.Height;
+            langList = new string[]{ "en", "ru" };
+            langToolStripComboBox1.Items.AddRange(langList);
+            ChangeLang(currentLang);
+            langToolStripComboBox1.SelectedIndex = 0;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // this.Close();
             Application.Exit();
         }
 
@@ -57,11 +71,6 @@ namespace E14_440FileViewer.NET.forms
                 ParamsReader paramsReader = new ParamsReader();
                 channelsArrayList =
                     paramsReader.getParams(filePath + ".prm");
-                /* Console.WriteLine(paramsReader.Count + " " + paramsReader.Frequency + "\n");
-                foreach (gen.Channel<double> channel in channelsArrayList)
-                {
-                    Console.WriteLine(channel.number + " " + channel.amp);
-                } */
 
                 DataReader dataReader = new DataReader();
                 dataReader.getData(filePath + ".dat", ref channelsArrayList);
@@ -83,14 +92,11 @@ namespace E14_440FileViewer.NET.forms
                 Graphics g = e.Graphics;
                 g.SmoothingMode = SmoothingMode.HighQuality;
                 double zoomX = 1.0;
-                double zoomY = 2.0;
                 startPoint.Y = e.ClipRectangle.Height / 2;
                 double drawStep =
-                // (double)channelsArrayList[0].dataArrayList.Count*(1.0f / this.Width);
                     (double)this.Width / (double)channelsArrayList[0].dataArrayList.Count * zoomX;
                 Console.WriteLine(drawStep);
                 PointF currentLineStart;
-                //var currentLineStart = startPoint;
                 IEnumerable<Color> colors = GetColor();
                 int counter = 0;
                 foreach (var channel in channelsArrayList)
@@ -104,16 +110,39 @@ namespace E14_440FileViewer.NET.forms
                             currentLineStart,
                             new PointF((float)(currentLineStart.X), (float)((startPoint.Y - (float)(item * 100.0))))
                         );
-                        // Console.WriteLine(currentLineStart);
-                        //currentDoubleX += drawStep;
                         currentLineStart.X += (float)drawStep;
                         currentLineStart.Y = startPoint.Y - (float)(item * 100.0);
                     }
                 }
             }
-            
-            // g.DrawEllipse(new Pen(Color.BlueViolet), 100, 100, 200, 300);
-            // g.DrawLine(new Pen(Color.Red), startPoint, new Point(50, startPoint.Y - 300));
+        }
+
+        private void langToolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!localization)
+            {
+                IEnumerable<string> langs = GetLang();
+                currentLang =
+                    langs.ElementAt(((ToolStripComboBox)sender).SelectedIndex);
+                ChangeLang(currentLang);
+            }
+        }
+
+        private void ChangeLang(string lang) {
+            localization = true;
+            ResourceManager manager =
+                new ResourceManager(@"E14_440FileViewerNET.lang_resources.messages", typeof(MainForm).Assembly);
+            CultureInfo ci = new CultureInfo(lang);
+            fileToolStripMenuItem.Text = manager.GetString("file", ci);
+            openToolStripMenuItem.Text = manager.GetString("open", ci);
+
+            IEnumerable<string> langs = GetLang();
+            for (int langCounter = 0; langCounter < langs.Count(); langCounter++)
+            {
+                langToolStripComboBox1.Items[langCounter] =
+                    manager.GetString(langs.ElementAt(langCounter), ci);
+            }
+            localization = false;
         }
     }
 }
