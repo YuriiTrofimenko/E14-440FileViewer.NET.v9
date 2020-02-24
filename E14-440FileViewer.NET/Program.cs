@@ -26,9 +26,9 @@ namespace org.tyaa.e14_440fileviewernet
         [STAThread]
         static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new MainForm());
             /*ChannelsBundle channelsBundle1 =
                 new ChannelsBundle(new int[]{ 1, 2, 3 }, new int[] { 1, 1, 1 }, 1500);
             channelsBundle1[0] = new Channel();
@@ -156,7 +156,7 @@ namespace org.tyaa.e14_440fileviewernet
             }*/
             //Console.WriteLine(getMax(channelsMax));
 
-            //WorkHelper workHelper = new WorkHelper();
+            WorkHelper workHelper = new WorkHelper();
 
             /*int start1 = DateTime.Now.Millisecond;
             workHelper.printMax(@"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-10");
@@ -166,11 +166,11 @@ namespace org.tyaa.e14_440fileviewernet
             //1.6 1.7 1.4*/
 
             //start2 = DateTime.Now.Millisecond;
-            /*workHelper.doThread(
-                workHelper.printMax
-                , @"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-10"
-            );
             workHelper.doThread(
+                workHelper.printMax
+                , @"C:\Users\student\source\repos\SP\e440cs-v9\data\10f"
+            );
+            /*workHelper.doThread(
                 workHelper.printMax
                 , @"C:\Users\student\tyaa\C#\SystemDev\сп\16 02 2013 9-00 tar"
             );
