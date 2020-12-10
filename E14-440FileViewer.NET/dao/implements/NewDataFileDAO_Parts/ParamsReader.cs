@@ -37,7 +37,7 @@ namespace E14_440FileViewer.NET.dao.implements.NewDataFileDAO_Parts
             int[] paramsArray = new int[66];
             //вызов метода заполнения массива параметров
             //getParamsCPP(_filePathString, ref paramsArray);
-            getParamsCPP(_filePathString, ref paramsArray);
+            getParamsCS(_filePathString, ref paramsArray);
             mCount = paramsArray[0];
             mFrequency = paramsArray[65];
             for (int i_channel = 1; i_channel <= mCount; i_channel++)
